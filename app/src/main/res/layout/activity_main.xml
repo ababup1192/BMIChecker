@@ -8,7 +8,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-
     <EditText
         android:id="@+id/editTextHeight"
         android:layout_width="wrap_content"
@@ -19,13 +18,14 @@
         android:inputType="numberDecimal"
         android:ems="5" />
 
-    <TextView
+    <Spinner
+        android:id="@+id/spinnerHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/editTextHeight"
         android:layout_toEndOf="@id/editTextHeight"
         android:layout_marginStart="10dp"
-        android:text="@string/meter" />
+        android:entries="@array/height_items" />
 
     <EditText
         android:id="@+id/editTextWeight"

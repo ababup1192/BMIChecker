@@ -16,10 +16,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    defaultConfig {
+        testInstrumentationRunner "com.uphyca.testing.JUnit4InstrumentationTestRunner"
+    }
     productFlavors {
     }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile("junit:junit:4.+")
+    androidTestCompile("com.uphyca:android-junit4:+")
 }

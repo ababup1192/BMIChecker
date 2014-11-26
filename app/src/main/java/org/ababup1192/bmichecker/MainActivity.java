@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -15,7 +16,10 @@ public class MainActivity extends Activity {
     private EditText editTextHeight;
     private EditText editTextWeight;
     private Button buttonResult;
+    private Spinner spinnerHeight;
     private TextView textViewResult;
+
+    private static final int CM = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,7 @@ public class MainActivity extends Activity {
         editTextHeight = (EditText) findViewById(R.id.editTextHeight);
         editTextWeight = (EditText) findViewById(R.id.editTextWeight);
         buttonResult = (Button) findViewById(R.id.buttonResult);
+        spinnerHeight = (Spinner) findViewById(R.id.spinnerHeight);
         textViewResult = (TextView) findViewById(R.id.textViewResult);
 
         buttonResult.setOnClickListener(new View.OnClickListener() {
@@ -33,9 +38,18 @@ public class MainActivity extends Activity {
                 if (isDefinedWeightAndHeight()) {
                     float height = Float.valueOf(editTextHeight.getText().toString());
                     float weight = Float.valueOf(editTextWeight.getText().toString());
+                    int selectedHeightType = spinnerHeight.getSelectedItemPosition();
 
-                    BMI bmi = new BMI(height, weight);
-                    textViewResult.setText("BMI: " + bmi.getBMI());
+                    BMI bmi;
+
+                    if (selectedHeightType == CM) {
+                        bmi = BMI.createFromCentimeter(height, weight);
+                    } else {
+                        bmi = BMI.createFromMeter(height, weight);
+                    }
+
+                    textViewResult.setText("BMI:" + bmi.getBMI() + "\nあなたの理想の体重は" + bmi.getIdealWeight() + "kgです。");
+
                 } else {
                     textViewResult.setText("身長か体重が空です!");
                 }

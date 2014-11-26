@@ -5,9 +5,17 @@ public class BMI {
     private float height;
     private float weight;
 
-    public BMI(float height, float weight) {
+    private BMI(float height, float weight) {
         this.height = height;
         this.weight = weight;
+    }
+
+    public static BMI createFromCentimeter(float height, float weight) {
+        return new BMI(height / 100.0f, weight);
+    }
+
+    public static BMI createFromMeter(float height, float weight) {
+        return new BMI(height, weight);
     }
 
     public float getHeight() {
@@ -24,6 +32,10 @@ public class BMI {
         } else {
             return weight / (height * height);
         }
+    }
+
+    public float getIdealWeight() {
+        return 22.0f * height * height;
     }
 
 }
