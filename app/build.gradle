@@ -16,6 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
     defaultConfig {
         testInstrumentationRunner "com.uphyca.testing.JUnit4InstrumentationTestRunner"
     }
@@ -25,8 +28,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile files('espresso-1.1-bundled.jar')
     androidTestCompile("junit:junit:4.+")
     androidTestCompile("com.uphyca:android-junit4:+")
 
-    androidTestCompile files('espresso-1.1-bundled.jar')
 }
