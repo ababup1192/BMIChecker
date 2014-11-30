@@ -20,7 +20,7 @@ android {
         exclude 'LICENSE.txt'
     }
     defaultConfig {
-        testInstrumentationRunner "com.uphyca.testing.JUnit4InstrumentationTestRunner"
+        testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
     }
     productFlavors {
     }
@@ -28,8 +28,10 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
     androidTestCompile("junit:junit:4.+")
     androidTestCompile("com.uphyca:android-junit4:+")
 
     androidTestCompile files('espresso-1.1-bundled.jar')
+
 }
