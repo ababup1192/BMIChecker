@@ -9,6 +9,7 @@ android {
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner 'com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner'
     }
     buildTypes {
         release {
@@ -20,18 +21,19 @@ android {
         exclude 'LICENSE.txt'
     }
     defaultConfig {
-        testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
     }
     productFlavors {
+        junit4Test {
+            testInstrumentationRunner "com.uphyca.testing.JUnit4InstrumentationTestRunner"
+        }
+        espressoTest {
+            testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
+        }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
-    androidTestCompile("junit:junit:4.+")
-    androidTestCompile("com.uphyca:android-junit4:+")
-
-    androidTestCompile files('espresso-1.1-bundled.jar')
-
+    junit4TestCompile 'junit:junit:4.+'
+    junit4TestCompile 'com.uphyca:android-junit4:+'
+    espressoTestCompile fileTree(dir: 'libs', include: ['*.jar'])
 }

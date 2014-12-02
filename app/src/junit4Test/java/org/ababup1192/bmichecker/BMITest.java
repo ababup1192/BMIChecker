@@ -1,10 +1,11 @@
 package org.ababup1192.bmichecker;
 
 import com.uphyca.testing.AndroidTestCase;
+
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class BMITest extends AndroidTestCase {
 
